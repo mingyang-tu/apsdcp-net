@@ -1,6 +1,6 @@
-exp_name: "2025_0114_030455_s2"
-model_path:  /home/tmy/Desktop/adaptive-patch-size-dark-channel-prior/results/RESIDE-6K/model/2025_0114_030455_s2/model_final.pth
-save_dir: /home/tmy/Desktop/adaptive-patch-size-dark-channel-prior/results/RESIDE-6K/result
+exp_name: "two_stage"
+model_path:  ckpts/apsdcp-net-ckpt.pth
+save_dir: results/RESIDE-6K/result
 
 dataset:
   name: RESIDE-6K

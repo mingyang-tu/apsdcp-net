@@ -1,4 +1,5 @@
 import os
+import sys
 import cv2
 
 from utils.common import AverageMeter
@@ -6,13 +7,10 @@ from metrics import calculate_psnr, calculate_ssim_256, calculate_ssim
 
 
 if __name__ == "__main__":
-    dataset = "OHAZE-resized"
-    exp_name = "2025_0205_114156"
-    stage = 1
+    results_root = sys.argv[1]
+    dehazed_dir = os.path.join(results_root, "J")
+    gt_dir = sys.argv[2]
 
-    results_root = f"/home/tmy/Desktop/adaptive-patch-size-dark-channel-prior/results/{dataset}/result/{exp_name}"
-    dehazed_dir = os.path.join(results_root, "J_refine" if stage == 1 else "J")
-    gt_dir = f"/home/tmy/Desktop/{dataset}/test/GT"
     write_file = os.path.join(results_root, "psnr_ssim.txt")
 
     filenames = sorted(os.listdir(dehazed_dir))
@@ -36,7 +34,7 @@ if __name__ == "__main__":
                 gt_img = cv2.resize(gt_img, (dehazed_img.shape[1], dehazed_img.shape[0]))
 
             psnr = calculate_psnr(dehazed_img, gt_img)
-            ssim = calculate_ssim(dehazed_img, gt_img)
+            ssim = calculate_ssim_256(dehazed_img, gt_img)
 
             PSNR.update(psnr)
             SSIM.update(ssim)
