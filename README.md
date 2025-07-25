@@ -1,4 +1,4 @@
-# Adaptive Patch-Size Dark Channel Prior Network (APSDCP-Net)
+# Adaptive Patch Size Dark Channel Prior Network (APSDCP-Net)
 
 ## Requirements
 
